@@ -7,7 +7,7 @@ from database import *
 from scraper import *
 from module2 import *
 
-# Zum Starten des Programms die ausfürhen!
+# Zum Starten des Programms ausfürhen!
 
 
 class App:
