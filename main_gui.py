@@ -14,14 +14,14 @@ class App:
     def __init__(self, parent):
         self.thread = None
 
-        self.master = Frame(parent)
-        self.master.pack()
-        self.listbox = Listbox(self.master, height=25, width=36)
+        self.main = Frame(parent)
+        self.main.pack()
+        self.listbox = Listbox(self.main, height=25, width=36)
         self.listbox.bind("<<ListboxSelect>>", self.listbox_onselect)
         self.listbox.grid(column=1, row=1, columnspan=6, rowspan=10, sticky="n")
         self.listbox.insert(END, "Beobachtete Aktien")
 
-        self.frame_data = Frame(self.master)
+        self.frame_data = Frame(self.main)
         self.frame_data.grid(column=8, row=1, columnspan=9, rowspan=8, sticky="n")
 
         # Inhalt von frame_data mit.grid()
@@ -60,30 +60,30 @@ class App:
             self.frame_data.grid_rowconfigure(row, minsize=30)
 
         # Buttons
-        self.button_add_stock = StyledButton(self.master, text="Aktie hinzufügen", command=self.add_stock_button)
+        self.button_add_stock = StyledButton(self.main, text="Aktie hinzufügen", command=self.add_stock_button)
         self.button_add_stock.grid(column=1, row=BUTTON_ROW, columnspan=3)
-        self.button_remove_stock = StyledButton(self.master, text="Aktie entfernen", command=self.remove_stock)
+        self.button_remove_stock = StyledButton(self.main, text="Aktie entfernen", command=self.remove_stock)
         self.button_remove_stock.grid(column=4, row=BUTTON_ROW, columnspan=3)
-        self.button_start_scraping = StyledButton(self.master, text="Start Scraping", command=self.start_scraping)
+        self.button_start_scraping = StyledButton(self.main, text="Start Scraping", command=self.start_scraping)
         self.button_start_scraping.grid(column=8, row=BUTTON_ROW, columnspan=3)
-        self.button_stop_scraping = StyledButton(self.master, text="Stop Scraping", command=self.stop_scraping)
+        self.button_stop_scraping = StyledButton(self.main, text="Stop Scraping", command=self.stop_scraping)
         self.button_stop_scraping.grid(column=11, row=BUTTON_ROW, columnspan=3)
-        self.button_exit = StyledButton(self.master, text="Beenden", command=self.exit_app) \
+        self.button_exit = StyledButton(self.main, text="Beenden", command=self.exit_app) \
             .grid(column=14, row=BUTTON_ROW, columnspan=3)
 
         # Combobox
-        self.label_interval = Label(self.master, text="Zeitintervall (min):") \
+        self.label_interval = Label(self.main, text="Zeitintervall (min):") \
             .grid(column=5, row=BUTTON_ROW - 1, columnspan=3, sticky="e")
         self.interval_list = [10, 20, 30, 45, 60, 90, 120]
-        self.combobox_interval = StyledCombobox(self.master, values=self.interval_list)
+        self.combobox_interval = StyledCombobox(self.main, values=self.interval_list)
         self.combobox_interval.grid(column=8, row=BUTTON_ROW - 1, columnspan=3)
 
-        self.configure_grid(self.master)
+        self.configure_grid(self.main)
         self.populate_listbox()
 
     # Einrichten eines Grids mit festen Höhen und Breiten (40x40)
     def configure_grid(self, grid):
-        Frame(self.master).grid(column=17, row=0)  # Damit Spalte 17 im Grid entsteht
+        Frame(self.main).grid(column=17, row=0)  # Damit Spalte 17 im Grid entsteht
         col_count, row_count = grid.grid_size()
         for col in list(range(col_count)):
             grid.grid_columnconfigure(col, minsize=40, uniform="cells")
