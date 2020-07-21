@@ -16,13 +16,13 @@ from tkinter import font
 
 
 # class TestApp(Tk.Frame):
-#     def __int__(self, master=None):
-#         super().__init__(master)
-#         self.master
+#     def __int__(self, main=None):
+#         super().__init__(main)
+#         self.main
 
 class App1:
-    def __init__(self, master):
-        frame = Frame(master)
+    def __init__(self, main):
+        frame = Frame(main)
         frame.pack()
 
         self.button = Button(frame, text="QUIT", fg="red", command=frame.quit)

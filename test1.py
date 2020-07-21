@@ -4,12 +4,12 @@ from tkinter import *
 
 
 class App2:
-    def __init__(self, master):
-        self.listbox = Listbox(master, height=25, width=40)
+    def __init__(self, main):
+        self.listbox = Listbox(main, height=25, width=40)
         self.listbox.grid(column=1, row=1, columnspan=6, rowspan=10, sticky="n")
         self.listbox.insert(END, "Beobachtete Aktien")  # TODO: Platzhalter ersetzen
         # TODO: Rahmen entfernen
-        self.frame_data = LabelFrame(master, highlightbackground="black", highlightcolor="black", highlightthickness=1, bd=0)
+        self.frame_data = LabelFrame(main, highlightbackground="black", highlightcolor="black", highlightthickness=1, bd=0)
         self.frame_data.grid(column=8, row=1, columnspan=9, rowspan=7, sticky="n")
 
         # Inhalt von frame_data mit.grid()
@@ -36,14 +36,14 @@ class App2:
         # style_button.configure("TButton", width=120, height=40)
         button_row = 11
 
-        self.button_add_stock = Button(master, text="Aktie hinzufügen")
+        self.button_add_stock = Button(main, text="Aktie hinzufügen")
         self.button_add_stock.grid(column=1, row=button_row, columnspan=3)
-        self.button_remove_stock = Button(master, text="Aktie entfernen")
+        self.button_remove_stock = Button(main, text="Aktie entfernen")
         self.button_remove_stock.grid(column=4, row=button_row, columnspan=3)
-        self.button_start_scraping= Button(master, text="Start Scraping")
+        self.button_start_scraping= Button(main, text="Start Scraping")
         self.button_start_scraping.grid(column=8, row=button_row, columnspan=3)
 
-        self.configure_grid(master)
+        self.configure_grid(main)
 
     def configure_grid(self, grid):
         col_count, row_count = grid.grid_size()
